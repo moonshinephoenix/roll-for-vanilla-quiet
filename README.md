@@ -1,3 +1,9 @@
+** RollFor Quiet Edition **
+This version only is supposed to help the loot master having an easy to use ui and giving a good overview while still letting enough room for moderation and decisions. 
+- Announcements only for roll starting
+- No announcements for winners
+- No potentially stressful countdowns
+
 # RollFor
 A World of Warcraft (1.12.1 and 2.5.2) addon that manages rolling for items.  
 
