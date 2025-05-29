@@ -1,4 +1,4 @@
-** RollFor Quiet Edition **
+# RollFor Quiet Edition #
 This version only is supposed to help the loot master having an easy to use ui and giving a good overview while still letting enough room for moderation and decisions. 
 - Announcements only for roll starting
 - No announcements for winners
