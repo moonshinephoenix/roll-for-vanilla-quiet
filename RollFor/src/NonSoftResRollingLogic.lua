@@ -218,7 +218,7 @@ function M.new(
     local info_str = info and info ~= "" and string.format( " %s", info ) or roll_info
     local x_rolls_win = item_count > 1 and string.format( ". %d top rolls win.", item_count ) or ""
 
-    chat.announce( string.format( "Roll for %s%s:%s%s", count_str, item.link, info_str, x_rolls_win ), true )
+    chat.announce( string.format( "%s%s", count_str, item.link), true )
     accept_rolls()
   end
 
@@ -258,7 +258,7 @@ function M.new(
   local function cancel_rolling()
     stop_listening()
     print_rolling_complete( true )
-    chat.announce( string.format( "Rolling for %s was canceled.", item.link ) )
+    chat.info( string.format( "Rolling for %s was canceled.", item.link ) )
   end
 
   local function is_rolling()

@@ -170,7 +170,7 @@ function M.new( chat, players, item, item_count, on_rolling_finished, roll_type,
   local function cancel_rolling()
     stop_listening()
     print_rolling_complete( true )
-    chat.announce( string.format( "Rolling for %s was canceled.", item.link ) )
+    chat.info( string.format( "Rolling for %s was canceled.", item.link ) )
   end
 
   local function is_rolling()

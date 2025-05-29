@@ -44,7 +44,7 @@ function M.new( chat, ace_timer, roll_controller, strategy_factory, master_loot_
 
     roll_controller.waiting_for_rolls()
     local message = m.prettify_table( remaining_rollers, transform )
-    chat.announce( string.format( "SR rolls remaining: %s", message ) )
+    chat.info( string.format( "SR rolls remaining: %s", message ) )
   end
 
   ---@param strategy RollingStrategy

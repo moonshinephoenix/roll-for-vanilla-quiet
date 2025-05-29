@@ -58,7 +58,7 @@ function M.new( chat, roll_controller, softres, config )
 
     local rollers = m.prettify_table( winners, function( p ) return p.name end )
     chat.info( message( rollers, hl ) )
-    chat.announce( message( rollers ) )
+    chat.info( message( rollers ) )
   end
 
   ---@param winners Winner[]
@@ -96,7 +96,7 @@ function M.new( chat, roll_controller, softres, config )
 
     if strategy == RS.RaidRoll or strategy == RS.InstaRaidRoll then
       for _, winner in ipairs( winners ) do
-        chat.announce( string.format( "%s wins %s (raid-roll).", winner.name, item.link ) )
+        chat.info( string.format( "%s wins %s (raid-roll).", winner.name, item.link ) )
       end
 
       return
@@ -104,7 +104,7 @@ function M.new( chat, roll_controller, softres, config )
 
     if strategy == RS.SoftResRoll and winner_count == item_count and not winners[ 1 ].winning_roll then
       local ressed_by = m.prettify_table( m.map( winners, function( winner ) return winner.name end ) )
-      chat.announce( string.format( "%s soft-ressed %s.", ressed_by, item.link ), true )
+      chat.info( string.format( "%s soft-ressed %s.", ressed_by, item.link ), true )
 
       return
     end
@@ -148,7 +148,7 @@ function M.new( chat, roll_controller, softres, config )
     end
 
     chat.info( message( top_rollers_str_colored ) )
-    chat.announce( message( top_rollers_str ) )
+    chat.info( message( top_rollers_str ) )
   end
 
   ---@param event_data TieStartData
@@ -175,19 +175,11 @@ function M.new( chat, roll_controller, softres, config )
     local top_rollers_str = m.prettify_table( player_names )
     local roll_threshold_str = config.roll_threshold( roll_type ).str
 
-    chat.announce( string.format( "%s %s for %s%s now.%s", top_rollers_str, roll_threshold_str, prefix, item.link, suffix ) )
+    chat.info( string.format( "%s %s for %s%s now.%s", top_rollers_str, roll_threshold_str, prefix, item.link, suffix ) )
   end
 
   local function on_tick( data )
-    if not data or not data.seconds_left then return end
 
-    local seconds_left = data.seconds_left
-
-    if seconds_left == 3 then
-      chat.announce( "Stopping rolls in 3" )
-    elseif seconds_left < 3 then
-      chat.announce( tostring( seconds_left ) )
-    end
   end
 
   ---@param event_data RollingFinishedData
@@ -200,7 +192,6 @@ function M.new( chat, roll_controller, softres, config )
     if winner_count == 0 then
       local message = string.format( "No one rolled for %s.", data.item.link )
       chat.info( message )
-      chat.announce( message )
     end
   end
 

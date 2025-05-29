@@ -249,7 +249,7 @@ function M.new(
     local ressed_by = m.prettify_table( map( players, format_name_with_rolls ) )
 
     if player_count ~= item_count then
-      chat.announce( string.format( "Roll for %s%s: SR by %s%s", count_str, item.link, ressed_by, x_rolls_win ), true )
+      chat.announce( string.format( "%s%s: SR by %s", count_str, item.link, ressed_by ), true )
       accept_rolls()
       return
     end
@@ -283,7 +283,7 @@ function M.new(
   local function cancel_rolling()
     stop_listening()
     print_rolling_complete( true )
-    chat.announce( string.format( "Rolling for %s was canceled.", item.link ) )
+    chat.info( string.format( "Rolling for %s was canceled.", item.link ) )
   end
 
   local function is_rolling()

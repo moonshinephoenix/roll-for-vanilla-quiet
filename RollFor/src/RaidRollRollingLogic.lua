@@ -51,14 +51,14 @@ function M.new(
       local next_player = string.format( "[%d]:%s", i, player.name )
 
       if (string.len( buffer .. separator .. next_player ) > 255) then
-        chat.announce( buffer )
+        chat.info( buffer )
         buffer = next_player
       else
         buffer = buffer .. separator .. next_player
       end
     end
 
-    if buffer ~= "" then chat.announce( buffer ) end
+    if buffer ~= "" then chat.info( buffer ) end
   end
 
   local function raid_roll()
@@ -70,7 +70,7 @@ function M.new(
     m_rolling = true
     clear_winners()
 
-    chat.announce( string.format( "Raid rolling %s%s...", item_count and item_count > 1 and string.format( "%sx", item_count ) or "", item.link ) )
+    chat.info( string.format( "Raid rolling %s%s...", item_count and item_count > 1 and string.format( "%sx", item_count ) or "", item.link ) )
 
     print_players( candidates )
     ace_timer.ScheduleTimer( M, function()
