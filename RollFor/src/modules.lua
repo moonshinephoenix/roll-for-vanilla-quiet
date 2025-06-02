@@ -461,6 +461,7 @@ end
 function M.colorize_player_by_class( name, class )
   if not class then return name end
   local color = M.api.RAID_CLASS_COLORS[ string.upper( class ) ].colorStr
+  if (color == nil) then return name end
   return "|c" .. color .. name .. M.api.FONT_COLOR_CODE_CLOSE
 end
 
